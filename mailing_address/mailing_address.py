@@ -19,7 +19,7 @@ def display_mailing_address():
 
 
 def main():
-    display_name_and_mailing_address()
+    display_mailing_address()
 
 if __name__ == "__main__":
     main()
