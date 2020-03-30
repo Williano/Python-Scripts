@@ -1,4 +1,4 @@
-def display_name_and_mailing_address():
+def display_mailing_address():
 
     name:str = "William Kpabitey Kwabla"
 
