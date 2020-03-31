@@ -1,5 +1,5 @@
 """
-    Script: Area of  Room
+    Script: Area of  a Room
     Description: A python program that ask user for lenght and width of a room
                  and compute the area of the room with the user inputs.
     Programmer: William Kpabitey Kwabla
