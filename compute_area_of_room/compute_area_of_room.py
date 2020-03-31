@@ -21,7 +21,8 @@ def calculate_area_of_room(length:float, width:float):
    return area
 
 def display_area_of_room(area:float):
-    pass
+
+    print(f"The area of the room is {area} feets")
 
 def main():
     pass
