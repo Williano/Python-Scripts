@@ -1,3 +1,12 @@
+"""
+    Script: Display User Name and Address
+    Description: A python program that displays your name and complete mailing
+                address formatted in the manner that you would usually see it
+                on the outside of an envelope.
+    Programmer: William Kpabitey Kwabla
+    Date: 03/30/20
+"""
+
 def display_mailing_address():
 
     name:str = "William Kpabitey Kwabla"
