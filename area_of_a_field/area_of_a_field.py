@@ -1,16 +1,17 @@
 """
-    Script: Area of  a Room
-    Description: A python program that ask user for lenght and width of a room
-                 and compute the area of the room with the user inputs.
+    Script: Area of  a Field
+    Description: A python program that reads the length and width of a farmer’s
+                 field from the user in feet and Display the area of the field
+                 in acres.
     Programmer: William Kpabitey Kwabla
-    Date: 03/31/20
+    Date: 04/01/20
 """
 
 
-def get_length_and_width_of_room_from_user():
+def get_length_and_width_of_field_from_user():
 
-    length:float = float(input("Enter the length of the room in meters: "))
-    width:float = float(input("Enter the width of the room in meters: "))
+    length:float = float(input("Enter the length of the field in meters: "))
+    width:float = float(input("Enter the width of the field in meters: "))
 
     return length, width
 
@@ -27,7 +28,7 @@ def display_area_of_room(area:float):
 
 def main():
 
-    length, width = get_length_and_width_of_room_from_user()
+    length, width = get_length_and_width_of_field_from_user()
 
     area:float = calculate_area_of_room(length, width)
 
