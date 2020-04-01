@@ -25,12 +25,14 @@ def calculate_area_of_field_in_feet(length:float, width:float):
 
 def convert_area_from_feet_to_arces(area_in_feet:float):
 
-    pass
+    area_in_arces:float = area_in_feet / ONE_ARCE_CONSTANT
 
-def display_area_of_field(area:float):
+    return area_in_arces
+
+def display_area_of_field(area_in_arces:float):
 
     print()
-    print(f"The area of the field is {area} arces")
+    print(f"The area of the field is {area_in_arces} arces")
 
 def main():
 
