@@ -21,10 +21,10 @@ def calculate_area_of_field(length:float, width:float):
 
    return area
 
-def display_area_of_room(area:float):
+def display_area_of_field(area:float):
 
     print()
-    print(f"The area of the room is {area} meters")
+    print(f"The area of the field is {area} arces")
 
 def main():
 
@@ -32,7 +32,7 @@ def main():
 
     area:float = calculate_area_of_field(length, width)
 
-    display_area_of_room(area)
+    display_area_of_field(area)
 
 if __name__ == "__main__":
     main()
