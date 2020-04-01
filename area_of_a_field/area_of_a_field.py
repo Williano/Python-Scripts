@@ -15,11 +15,16 @@ def get_length_and_width_of_field_from_user():
 
     return length, width
 
-def calculate_area_of_field(length:float, width:float):
+def calculate_area_of_field_in_feet(length:float, width:float):
 
-   area:float = length * width
+   area_in_feet:float = length * width
 
-   return area
+   return area_in_feet
+
+
+def convert_area_from_feet_to_arces(area_in_feet:float):
+
+    pass
 
 def display_area_of_field(area:float):
 
@@ -30,7 +35,7 @@ def main():
 
     length, width = get_length_and_width_of_field_from_user()
 
-    area:float = calculate_area_of_field(length, width)
+    area:float = calculate_area_of_field_in_feet(length, width)
 
     display_area_of_field(area)
 
