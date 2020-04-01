@@ -7,6 +7,7 @@
     Date: 04/01/20
 """
 
+ONE_ARCE_CONSTANT:int = 43560
 
 def get_length_and_width_of_field_from_user():
 
