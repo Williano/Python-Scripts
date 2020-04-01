@@ -38,9 +38,11 @@ def main():
 
     length, width = get_length_and_width_of_field_from_user()
 
-    area:float = calculate_area_of_field_in_feet(length, width)
+    area_in_feet:float = calculate_area_of_field_in_feet(length, width)
 
-    display_area_of_field(area)
+    area_in_arces:float = convert_area_from_feet_to_arces(area_in_feet)
+
+    display_area_of_field(area_in_arces)
 
 if __name__ == "__main__":
     main()
