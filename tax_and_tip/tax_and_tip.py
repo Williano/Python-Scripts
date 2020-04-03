@@ -13,3 +13,25 @@
 
 TIP_CONSTANT: float = 0.18
 TAX_CONSTANT: float = 0.17
+
+
+def ask_user_for_cost_of_meal_in_dollars():
+    pass
+
+def calculate_tax(meal_cost:float):
+    pass
+
+def calculate_tip(meal_cost:float):
+    pass
+
+def calculate_grand_total_for_meal(tip_total:float, tax_total:float):
+    pass
+
+def display_grant_total_of_meal(grand_total_of_meal):
+    pass
+
+def main():
+    pass
+
+if __name__ == "__main__":
+    main()
