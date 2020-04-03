@@ -29,8 +29,13 @@ def get_number_of_containers_of_each_size_from_user():
 
     return number_of_one_liter_containers, number_of_more_than_one_liter_containers
 
-def compute_refund_for_each_container_size():
-    pass
+def compute_refund_for_each_container_size(number_of_one_liter_containers, number_of_more_than_one_liter_containers):
+
+    total_refund_for_one_liter_containers = number_of_more_than_one_liter_containers * ONE_LITER_CONSTANT
+
+    total_refund_for_more_than_one_liter_containers = number_of_more_than_one_liter_containers * MORE_THAN_ONE_LITER_CONSTANT
+
+    return total_refund_for_one_liter_containers, total_refund_for_more_than_one_liter_containers
 
 def display_refund_for_each_container_size_in_dollars():
     pass
