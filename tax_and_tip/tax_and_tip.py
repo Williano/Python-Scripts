@@ -10,3 +10,6 @@
     Programmer: William Kpabitey Kwabla.
     Date: 04/03/2020
 """
+
+TIP_CONSTANT: float = 0.18
+TAX_CONSTANT: float = 0.17
