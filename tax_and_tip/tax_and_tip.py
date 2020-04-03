@@ -67,13 +67,13 @@ def main():
 
     tip_amount:float = calculate_tip(cost_of_meal)
 
-    grand_total_for_meal:float = calculate_grand_total_for_meal(tax_amount, tip_amount)
+    grand_total_for_meal:float = calculate_grand_total_of_meal(tax_amount, tip_amount)
 
     display_tax_total(tax_amount)
 
     display_tip_total(tip_amount)
 
-    display_grant_total_of_meal(grand_total_for_meal)
+    display_grand_total_of_meal(grand_total_for_meal)
 
 
 if __name__ == "__main__":
