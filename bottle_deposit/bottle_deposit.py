@@ -31,17 +31,29 @@ def get_number_of_containers_of_each_size_from_user():
 
 def compute_refund_for_each_container_size(number_of_one_liter_containers, number_of_more_than_one_liter_containers):
 
-    total_refund_for_one_liter_containers = number_of_more_than_one_liter_containers * ONE_LITER_CONSTANT
+    total_refund_for_one_liter_containers = number_of_one_liter_containers * ONE_LITER_CONSTANT
 
     total_refund_for_more_than_one_liter_containers = number_of_more_than_one_liter_containers * MORE_THAN_ONE_LITER_CONSTANT
 
-    return total_refund_for_one_liter_containers, total_refund_for_more_than_one_liter_containers
+    total_refund = total_refund_for_one_liter_containers + total_refund_for_more_than_one_liter_containers
 
-def display_refund_for_each_container_size_in_dollars():
-    pass
+    return total_refund
+
+def display_refund_for_each_container_size_in_dollars(total_refund):
+
+    print()
+
+    print(f"Your total refund is ${round(total_refund, 2)}")
+
 
 def main():
-    pass
+
+    number_of_one_liter_containers, number_of_more_than_one_liter_containers = get_number_of_containers_of_each_size_from_user()
+
+    total_refund = compute_refund_for_each_container_size(number_of_one_liter_containers, number_of_more_than_one_liter_containers)
+
+    display_refund_for_each_container_size_in_dollars(total_refund)
+
 
 if __name__ == "__main__":
     main()
