@@ -17,7 +17,7 @@ TAX_CONSTANT: float = 0.17
 
 def ask_user_for_cost_of_meal_in_dollars():
 
-    cost_of_meal = float(input("Enter price for meal: "))
+    cost_of_meal = float(input("Enter price for meal $: "))
 
     return cost_of_meal
 
@@ -44,20 +44,20 @@ def display_tax_total(tax_total:float):
 
     print()
 
-    print("The total tax is $: {tax_total}")
+    print(f"The total tax is $: {tax_total}")
 
 def display_tip_total(tip_total:float):
 
     print()
 
-    print("The total tip is $: {tip_total}")
+    print(f"The total tip is $: {tip_total}")
 
 
 def display_grant_total_of_meal(grand_total_of_meal:float):
 
     print()
 
-    print("The grand total for meal including tax and tip is $: {grand_total_of_meal}")
+    print(f"The grand total for meal including tax and tip is $: {grand_total_of_meal}")
 
 def main():
 
