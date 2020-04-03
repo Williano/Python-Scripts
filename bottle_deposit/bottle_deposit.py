@@ -18,6 +18,8 @@
     Date: 03/31/20
 """
 
+ONE_LITER_CONSTANT: float = 0.10
+MORE_THAN_ONE_LITER_CONSTANT: float = 0.25
 
 def get_number_of_containers_of_each_size_from_user():
     pass
