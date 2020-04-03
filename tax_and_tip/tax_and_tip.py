@@ -53,14 +53,28 @@ def display_tip_total(tip_total:float):
     print("The total tip is $: {tip_total}")
 
 
-def display_grant_total_of_meal(grand_total_of_meal):
+def display_grant_total_of_meal(grand_total_of_meal:float):
 
     print()
 
     print("The grand total for meal including tax and tip is $: {grand_total_of_meal}")
 
 def main():
-    pass
+
+    cost_of_meal:float = ask_user_for_cost_of_meal_in_dollars()
+
+    tax_amount:float = calculate_tax(cost_of_meal)
+
+    tip_amount:float = calculate_tip(cost_of_meal)
+
+    grand_total_for_meal:float = calculate_grand_total_for_meal(tax_amount, tip_amount)
+
+    display_tax_total(tax_amount)
+
+    display_tip_total(tip_amount)
+
+    display_grant_total_of_meal(grand_total_for_meal)
+
 
 if __name__ == "__main__":
     main()
