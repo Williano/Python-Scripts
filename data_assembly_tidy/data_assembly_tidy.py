@@ -12,7 +12,10 @@ def main():
     # append two dataframes and reset index
     lhr_visits_dataframe = pd.concat([lhr_visit_dom_dataframe, lhr_visit_intl_dataframe], ignore_index=True)
 
-    #print(lhr_visits_dataframe.head(10))
+    # Fill all missing values with zero
+    lhr_visits_zero_replace_dataframe = lhr_visits_dataframe.fillna(value=0)
+
+    print(lhr_visits_zero_replace_dataframe.head(10))
     # print(lhr_visit_dom_dataframe.head())
 
     # print("*****************************")
