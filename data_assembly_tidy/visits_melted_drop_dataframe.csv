@@ -1,0 +1,97 @@
+,visit_length,count,residence,purpose,flight_type
+0,Up to 12 hrs,154420.0,uk,bus,dom
+1,Up to 12 hrs,13627.0,uk,fun,dom
+2,Up to 12 hrs,0.0,for,bus,dom
+3,Up to 12 hrs,4767.0,for,fun,dom
+4,Up to 12 hrs,128740.0,uk,bus,intl
+5,Up to 12 hrs,12033.0,uk,fun,intl
+6,Up to 12 hrs,259642.0,for,bus,intl
+7,Up to 12 hrs,26326.0,for,fun,intl
+8,Over 12 hrs to 1 day,125309,uk,bus,dom
+9,Over 12 hrs to 1 day,13148,uk,fun,dom
+10,Over 12 hrs to 1 day,0,for,bus,dom
+11,Over 12 hrs to 1 day,none,for,fun,dom
+12,Over 12 hrs to 1 day,292759,uk,bus,intl
+13,Over 12 hrs to 1 day,26915,uk,fun,intl
+14,Over 12 hrs to 1 day,227083,for,bus,intl
+15,Over 12 hrs to 1 day,57952,for,fun,intl
+16,Over 1 day to 2 days,280907,uk,bus,dom
+17,Over 1 day to 2 days,68630,uk,fun,dom
+18,Over 1 day to 2 days,10095,for,bus,dom
+19,Over 1 day to 2 days,25372,for,fun,dom
+20,Over 1 day to 2 days,802367,uk,bus,intl
+21,Over 1 day to 2 days,186414,uk,fun,intl
+22,Over 1 day to 2 days,541518,for,bus,intl
+23,Over 1 day to 2 days,367979,for,fun,intl
+24,Over 2 days to 3 days,195927,uk,bus,dom
+25,Over 2 days to 3 days,187788,uk,fun,dom
+26,Over 2 days to 3 days,10764,for,bus,dom
+27,Over 2 days to 3 days,7687,for,fun,dom
+28,Over 2 days to 3 days,1179401,uk,bus,intl
+29,Over 2 days to 3 days,789046,uk,fun,intl
+30,Over 2 days to 3 days,1036011,for,bus,intl
+31,Over 2 days to 3 days,842326,for,fun,intl
+32,Over 3 days to 4 days,77236,uk,bus,dom
+33,Over 3 days to 4 days,218805,uk,fun,dom
+34,Over 3 days to 4 days,2335,for,bus,dom
+35,Over 3 days to 4 days,10537,for,fun,dom
+36,Over 3 days to 4 days,1182390,uk,bus,intl
+37,Over 3 days to 4 days,1869780,uk,fun,intl
+38,Over 3 days to 4 days,1185938,for,bus,intl
+39,Over 3 days to 4 days,1875647,for,fun,intl
+40,Over 4 days to 5 days,33447,uk,bus,dom
+41,Over 4 days to 5 days,66226,uk,fun,dom
+42,Over 4 days to 5 days,8324,for,bus,dom
+43,Over 4 days to 5 days,38694,for,fun,dom
+44,Over 4 days to 5 days,565233,uk,bus,intl
+45,Over 4 days to 5 days,1294056,uk,fun,intl
+46,Over 4 days to 5 days,735945,for,bus,intl
+47,Over 4 days to 5 days,1343424,for,fun,intl
+48,Over 5 days to 6 days,10645,uk,bus,dom
+49,Over 5 days to 6 days,28552,uk,fun,dom
+50,Over 5 days to 6 days,none,for,bus,dom
+51,Over 5 days to 6 days,10233,for,fun,dom
+52,Over 5 days to 6 days,209144,uk,bus,intl
+53,Over 5 days to 6 days,566397,uk,fun,intl
+54,Over 5 days to 6 days,286072,for,bus,intl
+55,Over 5 days to 6 days,582867,for,fun,intl
+56,Over 6 days to 1 week,3955,uk,bus,dom
+57,Over 6 days to 1 week,92861,uk,fun,dom
+58,Over 6 days to 1 week,5980,for,bus,dom
+59,Over 6 days to 1 week,18896,for,fun,dom
+60,Over 6 days to 1 week,802846,uk,bus,intl
+61,Over 6 days to 1 week,3159862,uk,fun,intl
+62,Over 6 days to 1 week,1045448,for,bus,intl
+63,Over 6 days to 1 week,3088085,for,fun,intl
+64,Over 1 week to 2 weeks,13284,uk,bus,dom
+65,Over 1 week to 2 weeks,97781,uk,fun,dom
+66,Over 1 week to 2 weeks,10654,for,bus,dom
+67,Over 1 week to 2 weeks,26359,for,fun,dom
+68,Over 1 week to 2 weeks,698202,uk,bus,intl
+69,Over 1 week to 2 weeks,6132141,uk,fun,intl
+70,Over 1 week to 2 weeks,787222,for,bus,intl
+71,Over 1 week to 2 weeks,4980963,for,fun,intl
+72,Over 2 weeks to 3 weeks,13708.0,uk,bus,dom
+73,Over 2 weeks to 3 weeks,8545.0,uk,fun,dom
+74,Over 2 weeks to 3 weeks,0.0,for,bus,dom
+75,Over 2 weeks to 3 weeks,4767.0,for,fun,dom
+76,Over 2 weeks to 3 weeks,153495.0,uk,bus,intl
+77,Over 2 weeks to 3 weeks,2634907.0,uk,fun,intl
+78,Over 2 weeks to 3 weeks,186617.0,for,bus,intl
+79,Over 2 weeks to 3 weeks,1665635.0,for,fun,intl
+80,Over 3 weeks to 4 weeks,4522.0,uk,bus,dom
+81,Over 3 weeks to 4 weeks,17695.0,uk,fun,dom
+82,Over 3 weeks to 4 weeks,0.0,for,bus,dom
+83,Over 3 weeks to 4 weeks,5898.0,for,fun,dom
+84,Over 3 weeks to 4 weeks,107981.0,uk,bus,intl
+85,Over 3 weeks to 4 weeks,1487191.0,uk,fun,intl
+86,Over 3 weeks to 4 weeks,87751.0,for,bus,intl
+87,Over 3 weeks to 4 weeks,1110165.0,for,fun,intl
+88,Over 4 weeks,3564.0,uk,bus,dom
+89,Over 4 weeks,3821.0,uk,fun,dom
+90,Over 4 weeks,0.0,for,bus,dom
+91,Over 4 weeks,0.0,for,fun,dom
+92,Over 4 weeks,204405.0,uk,bus,intl
+93,Over 4 weeks,1481942.0,uk,fun,intl
+94,Over 4 weeks,187868.0,for,bus,intl
+95,Over 4 weeks,1164338.0,for,fun,intl
