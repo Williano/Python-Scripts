@@ -1,0 +1,5 @@
+type,Up to 12 hrs,Over 12 hrs to 1 day,Over 1 day to 2 days,Over 2 days to 3 days,Over 3 days to 4 days,Over 4 days to 5 days,Over 5 days to 6 days,Over 6 days to 1 week,Over 1 week to 2 weeks,Over 2 weeks to 3 weeks,Over 3 weeks to 4 weeks,Over 4 weeks
+uk_bus_dom,154420,125309,280907,195927,77236,33447,10645,3955,13284,13708,4522,3564
+uk_fun_dom,13627,13148,68630,187788,218805,66226,28552,92861,97781,8545,17695,3821
+for_bus_dom,,,10095,10764,2335,8324,none,5980,10654,,,
+for_fun_dom,4767,none,25372,7687,10537,38694,10233,18896,26359,4767,5898,
