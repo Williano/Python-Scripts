@@ -42,6 +42,8 @@ def main():
     # Drop "type" column
     visits_melted_drop_dataframe = visits_melted_dataframe.drop(['type'], axis=1)
 
+    visits_melted_drop_dataframe.to_csv("visits_melted_drop_dataframe.csv")
+
     # Display final dataframe
     print(visits_melted_drop_dataframe.head(96))
 
