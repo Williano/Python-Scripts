@@ -18,7 +18,10 @@ def main():
     # Save merged data to csv with no index
     lhr_visits_zero_replace_dataframe.to_csv("lhr_visits.csv", index=False)
 
-    #print(lhr_visits_zero_replace_dataframe.head(10))
+    # Load saved file into visits dataframe
+    visits_dataframe = pd.read_csv("lhr_visits.csv")
+
+    print(visits_dataframe.head(10))
     # print(lhr_visit_dom_dataframe.head())
 
     # print("*****************************")
