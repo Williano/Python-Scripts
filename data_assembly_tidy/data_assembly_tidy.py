@@ -33,6 +33,11 @@ def main():
         "Over 3 weeks to 4 weeks", "Over 4 weeks"],
         var_name="visit_length", value_name="count")
 
+
+    # Split values in "type" column into values for variables
+    visits_melted_dataframe[['residence', 'purpose', 'flight_type']]= visits_melted_dataframe.type.apply(
+        lambda letter: pd.Series(str(letter).split("_")))
+
     print(visits_melted_dataframe.head(100))
     # print(lhr_visit_dom_dataframe.head())
 
