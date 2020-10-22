@@ -15,7 +15,10 @@ def main():
     # Fill all missing values with zero
     lhr_visits_zero_replace_dataframe = lhr_visits_dataframe.fillna(value=0)
 
-    print(lhr_visits_zero_replace_dataframe.head(10))
+    # Save merged data to csv with no index
+    lhr_visits_zero_replace_dataframe.to_csv("lhr_visits.csv", index=False)
+
+    #print(lhr_visits_zero_replace_dataframe.head(10))
     # print(lhr_visit_dom_dataframe.head())
 
     # print("*****************************")
