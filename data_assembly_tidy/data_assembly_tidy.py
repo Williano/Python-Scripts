@@ -22,7 +22,8 @@ def main():
     visits_dataframe = pd.read_csv("lhr_visits.csv")
 
     # Melt the data columns into visit length and count
-    visits_melted_dataframe = visits_dataframe.melt(
+    visits_melted_dataframe = pd.melt(
+        visits_dataframe,
         id_vars=["type"],
         value_vars=[
         "Up to 12 hrs", "Over 12 hrs to 1 day",
@@ -38,12 +39,11 @@ def main():
     visits_melted_dataframe[['residence', 'purpose', 'flight_type']]= visits_melted_dataframe.type.apply(
         lambda letter: pd.Series(str(letter).split("_")))
 
-    print(visits_melted_dataframe.head(100))
-    # print(lhr_visit_dom_dataframe.head())
+    # Drop "type" column
+    visits_melted_drop_dataframe = visits_melted_dataframe.drop(['type'], axis=1)
 
-    # print("*****************************")
+    print(visits_melted_drop_dataframe.head(96))
 
-    # print(lhr_visit_intl_dataframe.head())
 
 
 if __name__ == "__main__":
