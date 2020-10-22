@@ -9,7 +9,10 @@ def main():
     lhr_visit_intl_dataframe = pd.read_csv("lhr_visit_intl.csv", na_values=["NaN"])
 
 
+    # append two dataframes and reset index
+    lhr_visits_dataframe = pd.concat([lhr_visit_dom_dataframe, lhr_visit_intl_dataframe], ignore_index=True)
 
+    #print(lhr_visits_dataframe.head(10))
     # print(lhr_visit_dom_dataframe.head())
 
     # print("*****************************")
