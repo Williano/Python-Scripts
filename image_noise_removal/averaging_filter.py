@@ -17,7 +17,7 @@ def load_image():
     return image
 
 
-def filter_image_with_3x3_median(image):
+def filter_image_with_3x3_averaging(image):
 
     # Extracts the number of rows and columns in the image
     rows, columns = image.shape
