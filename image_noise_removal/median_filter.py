@@ -1,3 +1,9 @@
+"""
+    Script: Median filter function
+    Description: This program loads an image with salt and pepper noise in it
+                 and applies a 3 x 3 median filter function to reduce the noise
+"""
+
 import cv2
 import numpy as np
 
