@@ -45,7 +45,7 @@ def filter_image_with_3x3_median(image):
     new_image = new_image.astype(np.uint8)
 
     # Write blurred image into new file called Lena blurred average
-    cv2.imwrite('Lena_blurred_median.jpg', new_image)
+    cv2.imwrite('Lena_blurred_average.jpg', new_image)
 
 
 def main():
