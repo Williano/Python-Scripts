@@ -60,7 +60,7 @@ def main():
     loaded_image = load_image()
 
     # Filter the loaded image
-    filter_image_with_3x3_averaging(loaded_image)
+    filter_image_with_3x3_median(loaded_image)
 
 
 # Call the main function if the file is not being imported as a module

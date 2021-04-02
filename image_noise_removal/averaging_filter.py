@@ -30,8 +30,8 @@ def filter_image_with_3x3_averaging(image):
     new_image = np.zeros([rows, columns])
 
     # Loop through the image.
-    # For every 3X3 area, find the median of the pixels and
-    # replace the ceter pixel by the median
+    # For every 3X3 area, find the average of the pixels and
+    # replace the ceter pixel by the average
     for row in range(1, rows-1):
         for column in range(1, columns-1):
             temp_mask = image[row-1, column-1]*\
@@ -60,7 +60,7 @@ def main():
     loaded_image = load_image()
 
     # Filter the loaded image
-    filter_image_with_3x3_median(loaded_image)
+    filter_image_with_3x3_averaging(loaded_image)
 
 
 # Call the main function if the file is not being imported as a module
