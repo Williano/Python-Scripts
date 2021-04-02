@@ -2,25 +2,58 @@ import cv2
 import numpy as np
 
 
-# Read the image
-img = cv2.imread('sample.png', 0)
+def load_image():
 
-# Obtain number of rows and columns
-# of the image
-m, n = img.shape
+    # Read the image
+    image = cv2.imread('Lena_noise.jpg', 0)
 
-# Develop Averaging filter(3, 3) mask
-mask = np.ones([3, 3], dtype = int)
-mask = mask / 9
+    # return image loaded
+    return image
 
-# Convolve the 3X3 mask over the image
-img_new = np.zeros([m, n])
 
-for i in range(1, m-1):
-    for j in range(1, n-1):
-        temp = img[i-1, j-1]*mask[0, 0]+img[i-1, j]*mask[0, 1]+img[i-1, j + 1]*mask[0, 2]+img[i, j-1]*mask[1, 0]+ img[i, j]*mask[1, 1]+img[i, j + 1]*mask[1, 2]+img[i + 1, j-1]*mask[2, 0]+img[i + 1, j]*mask[2, 1]+img[i + 1, j + 1]*mask[2, 2]
+def filter_image_with_3x3_median(image):
 
-        img_new[i, j]= temp
+    # Extracts the number of rows and columns in the image
+    rows, columns = image.shape
 
-img_new = img_new.astype(np.uint8)
-cv2.imwrite('blurred.tif', img_new)
+    # Creates Averaging filter(3, 3) mask
+    mask = np.ones([3, 3], dtype = int)
+    mask = mask / 9
+
+    # Combines the 3X3 mask over the image
+    new_image = np.zeros([rows, columns])
+
+    for row in range(1, rows-1):
+        for column in range(1, columns-1):
+            temp_mask = image[row-1, column-1]*\
+                mask[0, 0]+image[row-1, column]*\
+                    mask[0, 1]+image[row-1, column + 1]*\
+                        mask[0, 2]+image[row, column-1]*\
+                            mask[1, 0]+ image[row, column]*\
+                                mask[1, 1]+image[row, column + 1]*\
+                                    mask[1, 2]+image[row + 1, column-1]*\
+                                        mask[2, 0]+image[row + 1, column]*\
+                                            mask[2, 1]+image[row + 1, column + 1]\
+                                                *mask[2, 2]
+
+            new_image[row, column]= temp_mask
+
+    # Convert the new image into numpy unsigned integer 8
+    new_image = new_image.astype(np.uint8)
+
+    # Write blurred image into new file called Lena blurred average
+    cv2.imwrite('Lena_blurred_average.jpg', new_image)
+
+
+def main():
+
+    # Load image and save into loaded image variable
+    loaded_image = load_image()
+
+    # Filter the loaded image
+    filter_image_with_3x3_median(loaded_image)
+
+
+# Call the main function if the file is not being imported as a module
+if __name__ == "__main__":
+    main()
