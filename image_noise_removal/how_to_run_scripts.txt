@@ -1,0 +1,17 @@
+# Setup
+- Install Python 3.8
+- Intall Pip
+- Install opencv-python
+- Install numpy
+
+
+# Executing program
+
+1. Median script
+
+>> python median_filter.py
+
+
+2. Averaging script
+
+>> python averaging_filter.py
