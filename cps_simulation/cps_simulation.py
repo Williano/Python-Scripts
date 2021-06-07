@@ -32,8 +32,8 @@ import random
 import simpy
 
 # Local imports
-from .component.component import Component
-from .component.fault_injector import FaultInjector
+from component.component import Component
+from component.fault_injector import FaultInjector
 
 
 RANDOM_SEED = 42
@@ -42,8 +42,23 @@ SIM_TIME = 100
 
 
 def main():
-    pass
 
+  # Setup and start the simulation
+  print('Process communication')
+  random.seed(RANDOM_SEED)
+  env = simpy.Environment()
+
+  componentA = Component(env, name="ComponentA", consumers=[], data_received=0, braodcaster="")
+  componentB = Component(env, name="ComponentB", consumers=[componentA], data_received=0, braodcaster="")
+  componentC = Component(env, name="ComponentC", consumers=[], data_received=0, braodcaster="")
+  componentD = Component(env, name="ComponentD", consumers=[], data_received=0, braodcaster="")
+  componentE = Component(env, name="ComponentE", consumers=[], data_received=0, braodcaster="")
+
+  componentB.send_data_to_consumers()
+  componentA.display_data_from_consumers()
+
+
+  env.run(until=SIM_TIME)
 
 if __name__ == "__main__":
     main()
