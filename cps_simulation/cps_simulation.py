@@ -75,6 +75,11 @@ def calculate_data_lost(data_lost):
 
     return average_data_lost
 
+def write_time_and_data_lost_to_file(time_message, data_lost_message):
+
+    with open("time_and_data_loss.text", "w") as lost_file:
+        lost_file.write(time_message)
+        lost_file.write(data_lost_message)
 
 def main():
     # Setup and start the simulation
@@ -107,9 +112,10 @@ def main():
     mins, secs = calculate_time_lost(time_lost=time_lost)
     size_of_data_loss = calculate_data_lost(data_lost=data_lost)
 
-    print(f"Total time lost is {secs} secs")
+    time_lost_message = f"Total time lost is {secs} secs \n"
+    data_lost_message = f"Total size of data lost is {size_of_data_loss} bytes"
 
-    print(f"Total size of data lost is {size_of_data_loss} bytes")
+    write_time_and_data_lost_to_file(time_lost_message, data_lost_message)
 
 if __name__ == "__main__":
     main()
