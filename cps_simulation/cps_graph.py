@@ -22,8 +22,8 @@ def get_cps_data() -> list:
 
         graph_nodes.append(cps_info)
 
-
     return graph_nodes
+
 
 def generate_and_draw_graph(graph_nodes):
 
