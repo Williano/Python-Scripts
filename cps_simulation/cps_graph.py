@@ -16,7 +16,7 @@ def get_cps_data() -> list:
 
         name:str = input(f"Enter the name of {cps}: ")
 
-        cps_internal_time = input(f"Enter the interanl timer for {name}: ")
+        cps_internal_time = input(f"Enter the interanl timer for {name}(secs): ")
 
         get_cps_consumers(name)
 
