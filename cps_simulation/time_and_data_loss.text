@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 The 1th injection was on the CPS: CPS1 at the time 641161s
 CPS1 -> DATA LOST: 3.846966kb
 CPS1 -> TIME LOST: 641161.0s
@@ -14,3 +15,8 @@ The 4th injection was on the CPS: CPS1 at the time 957635s
 CPS1 -> DATA LOST: 0.94581kb
 CPS1 -> TIME LOST: 157635.0s
 ********************* 
+=======
+CPS2 was interrupted at time 896326s
+CPS2 -> DATA LOST: 28kb
+CPS2 -> TIME LOST: 7.0s
+>>>>>>> 75ab8ede84d7c9a95cd2be6d22318e6fd7b60811
