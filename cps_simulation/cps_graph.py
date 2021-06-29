@@ -128,6 +128,15 @@ def inject_fault(no_injections):
         log_consumer_data_and_time_lost_to_file(interrupted_cps_name, time_of_injection, interrupted_cps_data_rate)
 
 
+def get_number_of_fault_injections() -> int:
+
+    no_injections:int = int(input(f"Enter the number of fault injections to be done:"))
+
+    print(" ")
+
+    return no_injections
+
+
 def main():
 
      get_cps_data()
@@ -135,9 +144,7 @@ def main():
      add_edges_to_node()
 
 
-     print(" ")
-
-     no_injections:int = int(input(f"Enter the number of fault injections to be done:"))
+     no_injections:int = get_number_of_fault_injections()
 
      inject_fault(no_injections)
 
