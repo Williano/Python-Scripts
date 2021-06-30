@@ -13,6 +13,16 @@ GRAPH_NODES:list = []
 no_injections:int
 number_of_cps:int
 
+def read_input_file():
+       with open("input_CPS.text", "r") as input_file:
+        first_line =  input_file.readline()
+
+        number_of_cps = len(first_line.strip())
+
+        # number_of_cps = (len(first_line)+1)/2
+
+
+
 
 def get_cps_data() -> list:
 
@@ -76,10 +86,10 @@ def write_time_and_data_lost_to_file(interrupt_message, internal_timer, time_mes
 
 def append_stars_to_file():
     with open("time_and_data_loss.text", "a") as lost_file:
-        lost_file.write("*********************************************************" + "\n" + "\n")
+        lost_file.write("**********************************************")
 
 
-def log_consumer_data_and_time_lost_to_file(consumer_delay, interrupted_cps_name, time_of_injection, interrupted_cps_data_rate):
+def log_consumer_data_and_time_lost_to_file(interrupted_cps_name, time_of_injection, interrupted_cps_data_rate):
 
         consumers_of_interrupted_cps = list(cps_graph.out_edges(interrupted_cps_name, data=True))
 
@@ -91,7 +101,7 @@ def log_consumer_data_and_time_lost_to_file(consumer_delay, interrupted_cps_name
 
             print(consumer_of_interrupted_cps_internal_timer)
 
-            consumer_time_loss = (time_of_injection % consumer_of_interrupted_cps_internal_timer) + consumer_delay
+            consumer_time_loss = time_of_injection % consumer_of_interrupted_cps_internal_timer
             consumer_data_loss = int(consumer_time_loss * interrupted_cps_data_rate) / 1000000
 
 
@@ -100,7 +110,7 @@ def log_consumer_data_and_time_lost_to_file(consumer_delay, interrupted_cps_name
             consumer_time_lost = f"Consumer {consumer_name} -> TIME LOST: {consumer_time_loss}us" + "\n"
             write_time_and_data_lost_to_file("" ,consumer_internal_timer, consumer_data_lost, consumer_time_lost)
 
-        append_stars_to_file()
+            append_stars_to_file()
 
 
 
@@ -136,16 +146,14 @@ def inject_fault(no_injections):
         cps_data_lost = f"CPS {interrupted_cps_name} -> DATA LOST: {cps_data_loss}kb" + "\n"
         cps_time_lost = f"CPS {interrupted_cps_name} -> TIME LOST: {cps_time_loss}us" + "\n"
 
-        write_time_and_data_lost_to_file(time_of_interrupt, cps_internal_timer, cps_data_lost, cps_time_lost)
+        write_time_and_data_lost_to_file(time_of_interrupt, cps_data_lost, cps_time_lost)
 
-        consumer_delay = datetime.now().microsecond
-
-        log_consumer_data_and_time_lost_to_file(consumer_delay, interrupted_cps_name, time_of_injection, interrupted_cps_data_rate)
+        log_consumer_data_and_time_lost_to_file(interrupted_cps_name, time_of_injection, interrupted_cps_data_rate)
 
 
 def get_number_of_fault_injections() -> int:
 
-    no_injections:int = int(input(f"Enter the number of fault injections to be done: "))
+    no_injections:int = int(input(f"Enter the number of fault injections to be done:"))
 
     print(" ")
 
@@ -158,7 +166,6 @@ def main():
 
      add_edges_to_node()
 
-     print(" ")
 
      no_injections:int = get_number_of_fault_injections()
 

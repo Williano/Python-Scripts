@@ -1,44 +1,48 @@
-The 1th injection was on the CPS: 1 at the time 835287s
-CPS 1 -> DATA LOST: 0.101115kb
-CPS 1 -> TIME LOST: 2247.0us
-Consumer 2 -> DATA LOST: 0.260415kb
-Consumer 2 -> TIME LOST: 5787.0us
-******************************************
+The 1th injection was on the CPS: 1 at the time 176090s
+CPS 1 checkpoint delay: 345413.0us
+CPS 1 -> DATA LOST: 1.05654kb
+CPS 1 -> TIME LOST: 176090.0us
+Consumer 2 checkpoint delay: 223453.0us
+Consumer 2 -> DATA LOST: 4.745148kb
+Consumer 2 -> TIME LOST: 790858.0us
+Consumer 3 checkpoint delay: 234454.0us
+Consumer 3 -> DATA LOST: 4.745148kb
+Consumer 3 -> TIME LOST: 790858.0us
+*********************************************************
 
-Consumer 3 -> DATA LOST: 0.027945kb
-Consumer 3 -> TIME LOST: 621.0us
-******************************************
+The 2th injection was on the CPS: 1 at the time 619776s
+CPS 1 checkpoint delay: 345413.0us
+CPS 1 -> DATA LOST: 0.823089kb
+CPS 1 -> TIME LOST: 274363.0us
+Consumer 2 checkpoint delay: 223453.0us
+Consumer 2 -> DATA LOST: 1.133595kb
+Consumer 2 -> TIME LOST: 377865.0us
+Consumer 3 checkpoint delay: 234454.0us
+Consumer 3 -> DATA LOST: 1.067589kb
+Consumer 3 -> TIME LOST: 355863.0us
+*********************************************************
 
-The 2th injection was on the CPS: 1 at the time 791329s
-CPS 1 -> DATA LOST: 0.101475kb
-CPS 1 -> TIME LOST: 2255.0us
-Consumer 2 -> DATA LOST: 0.059805kb
-Consumer 2 -> TIME LOST: 1329.0us
-******************************************
+The 3th injection was on the CPS: 1 at the time 210993s
+CPS 1 checkpoint delay: 345413.0us
+CPS 1 -> DATA LOST: 1.265958kb
+CPS 1 -> TIME LOST: 210993.0us
+Consumer 2 checkpoint delay: 223453.0us
+Consumer 2 -> DATA LOST: 4.375896kb
+Consumer 2 -> TIME LOST: 729316.0us
+Consumer 3 checkpoint delay: 234454.0us
+Consumer 3 -> DATA LOST: 4.375896kb
+Consumer 3 -> TIME LOST: 729316.0us
+*********************************************************
 
-Consumer 3 -> DATA LOST: 0.093915kb
-Consumer 3 -> TIME LOST: 2087.0us
-******************************************
-
-The 3th injection was on the CPS: 1 at the time 424878s
-CPS 1 -> DATA LOST: 0.06372kb
-CPS 1 -> TIME LOST: 1416.0us
-Consumer 2 -> DATA LOST: 0.011385kb
-Consumer 2 -> TIME LOST: 253.0us
-******************************************
-
-Consumer 3 -> DATA LOST: 0.21177kb
-Consumer 3 -> TIME LOST: 4706.0us
-******************************************
-
-The 4th injection was on the CPS: 1 at the time 340021s
-CPS 1 -> DATA LOST: 0.19593kb
-CPS 1 -> TIME LOST: 2177.0us
-Consumer 2 -> DATA LOST: 0.38439kb
-Consumer 2 -> TIME LOST: 4271.0us
-******************************************
-
-Consumer 3 -> DATA LOST: 0.45171kb
-Consumer 3 -> TIME LOST: 5019.0us
-******************************************
+The 4th injection was on the CPS: 1 at the time 529325s
+CPS 1 checkpoint delay: 345413.0us
+CPS 1 -> DATA LOST: 0.551736kb
+CPS 1 -> TIME LOST: 183912.0us
+Consumer 2 checkpoint delay: 223453.0us
+Consumer 2 -> DATA LOST: 1.27662kb
+Consumer 2 -> TIME LOST: 425540.0us
+Consumer 3 checkpoint delay: 234454.0us
+Consumer 3 -> DATA LOST: 1.210614kb
+Consumer 3 -> TIME LOST: 403538.0us
+*********************************************************
 
