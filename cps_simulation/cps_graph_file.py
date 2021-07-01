@@ -14,12 +14,15 @@ no_injections:int
 number_of_cps:int
 
 def read_input_file():
-       with open("input_CPS.text", "r") as input_file:
-        first_line =  input_file.readline()
+    with open("input_CPS.txt", "r") as input_file:
+        lines = []
+        for line in input_file:
+            lines.append(line.strip())
 
-        number_of_cps = len(first_line.strip())
-
+        #number_of_cps = len(first_line.strip())
         # number_of_cps = (len(first_line)+1)/2
+
+    return lines
 
 
 
