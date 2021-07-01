@@ -31,6 +31,10 @@ def get_cps_data() -> list:
 
     print(" ")
 
+    lines = read_input_file()
+
+    num_of_cps = len(lines[0])
+
     number_of_cps:int = int(input("How many cyber physical systems do you need in the simulation? (eg. 1, 2, ..): "))
 
     for cps in range(1, number_of_cps + 1):
@@ -47,6 +51,8 @@ def get_cps_data() -> list:
 
 
 def get_cps_consumers(cps_name, cps_internal_timer):
+
+    lines = read_input_file()
 
     number_of_consumers = int(input(f"How many consumer systems does {cps_name} have? (eg. 1, 2, ..): "))
 
