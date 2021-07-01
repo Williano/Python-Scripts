@@ -17,13 +17,27 @@ def read_input_file():
     with open("input_CPS.txt", "r") as input_file:
         lines = []
         for line in input_file:
-            lines.append(line.strip())
+            lines.append(line)
+            #lines.append(line.strip())
 
-        #number_of_cps = len(first_line.strip())
-        # number_of_cps = (len(first_line)+1)/2
+        number_of_cps = len(lines[0].replace(" ", "").strip())
 
-    return lines
+        for i in range(number_of_cps):
+                rate = lines[-2].strip().split(" ")[i]
+                cps_graph.add_node(i, internal_timer=rate)
 
+
+        for j in range(number_of_cps):
+            for i, value in enumerate(lines[j]):
+                if value == "1":
+                    print(lines[j+number_of_cps].strip().split(" ")[j])
+
+                    #i, j
+                    # value1 = lines[j+number_of_cps].split(" ")
+                    # cps_info = (j, i, {"data_rate": value1[i]  + "kbps"})
+                    # cps_graph.add_edge(j, i, "jyrtujrt" )
+
+    print(cps_graph.nodes(data=True))
 
 
 
@@ -171,17 +185,19 @@ def get_number_of_fault_injections() -> int:
 
 def main():
 
-     get_cps_data()
+    read_input_file()
 
-     add_edges_to_node()
+    #  get_cps_data()
 
-
-     no_injections:int = get_number_of_fault_injections()
-
-     inject_fault(no_injections)
+    #  add_edges_to_node()
 
 
-     generate_and_draw_graph()
+    #  no_injections:int = get_number_of_fault_injections()
+
+    #  inject_fault(no_injections)
+
+
+    #  generate_and_draw_graph()
 
 
 
