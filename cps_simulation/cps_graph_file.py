@@ -26,18 +26,16 @@ def read_input_file():
                 rate = lines[-2].strip().split(" ")[i]
                 cps_graph.add_node(i, internal_timer=rate)
 
-
         for j in range(number_of_cps):
-            for i, value in enumerate(lines[j]):
+            for i, value in enumerate(lines[j].strip().split(" ")):
                 if value == "1":
-                    print(lines[j+number_of_cps].strip().split(" ")[j])
+                    value1 = lines[j+number_of_cps].strip().split(" ")[i]
 
-                    #i, j
-                    # value1 = lines[j+number_of_cps].split(" ")
-                    # cps_info = (j, i, {"data_rate": value1[i]  + "kbps"})
-                    # cps_graph.add_edge(j, i, "jyrtujrt" )
+                    cps_info = (j, i, {"data_rate": value1})
+                    #GRAPH_NODES.append(cps_info)
+                    cps_graph.add_edge(j, i, data_rate=value1)
 
-    print(cps_graph.nodes(data=True))
+    #print(cps_graph.nodes(data=True))
 
 
 
@@ -148,17 +146,27 @@ def inject_fault(no_injections):
         time_of_injection = datetime.now().microsecond
 
         sleep(random.uniform(0.5, 1.5))
+        interrupted_cps = secrets.choice(list(cps_graph.nodes))
+        interrupted_cps = 0
+        print(interrupted_cps)
+        # cps1 = interrupted_cps[0]
+        # cps_list.append(cps1)
+        # cps2 = interrupted_cps[1]
+        # cps_list.append(cps2)
+        interrupted_cps_name = interrupted_cps
 
-        interrupted_cps = secrets.choice(GRAPH_NODES)
-        cps1 = interrupted_cps[0]
-        cps_list.append(cps1)
-        cps2 = interrupted_cps[1]
-        cps_list.append(cps2)
-        interrupted_cps_name = interrupted_cps[0]
+        #print(list(cps_graph.out_edges(interrupted_cps))[0][1])
+        #interrupted_cps_internal_timer = float(interrupted_cps["internal_timer"])
+        data_rate = nx.get_edge_attributes(cps_graph,'data_rate')
+        print(data_rate)
+        temp:int = 0
+        for i in range(len(list(cps_graph.out_edges(interrupted_cps)))):
+            print(list(cps_graph.out_edges(interrupted_cps))[i])
+            temp += int(data_rate(list(cps_graph.out_edges(interrupted_cps))[i][1]))
 
+        print(temp)
+        #interrupted_cps_data_rate = cps_graph.out_edges(interrupted_cps)[0][1]
 
-        interrupted_cps_internal_timer = float(interrupted_cps[2]["internal_timer"])
-        interrupted_cps_data_rate = int("".join(list(interrupted_cps[2]["data_rate"])[:-4]))
 
 
         cps_time_loss = time_of_injection % interrupted_cps_internal_timer
@@ -185,19 +193,20 @@ def get_number_of_fault_injections() -> int:
 
 def main():
 
+
     read_input_file()
 
-    #  get_cps_data()
+    # get_cps_data()
 
-    #  add_edges_to_node()
-
-
-    #  no_injections:int = get_number_of_fault_injections()
-
-    #  inject_fault(no_injections)
+    #add_edges_to_node()
 
 
-    #  generate_and_draw_graph()
+    no_injections:int = get_number_of_fault_injections()
+
+    inject_fault(no_injections)
+
+
+    generate_and_draw_graph()
 
 
 

@@ -12,6 +12,7 @@ cps_graph = nx.DiGraph()
 GRAPH_NODES:list = []
 no_injections:int
 number_of_cps:int
+number_of_consumers:int
 negotiating_delay:int
 
 
@@ -67,20 +68,23 @@ def generate_and_draw_graph():
     plt.show()
 
 
-def write_time_and_data_lost_to_file(interrupt_message, internal_timer, time_message, data_lost_message):
+def write_time_and_data_lost_to_file(cps_name, injection_time, internal_timer, time_message, data_lost_message, number_of_cps_consumers):
 
-    with open("time_and_data_loss.text", "a") as lost_file:
-        lost_file.write(interrupt_message)
+    with open("time_and_data_loss.csv", "a") as lost_file:
+        lost_file.write(cps_name)
+        lost_file.write(injection_time)
         lost_file.write(internal_timer)
         lost_file.write(time_message)
         lost_file.write(data_lost_message)
-
-def append_stars_to_file():
-    with open("time_and_data_loss.text", "a") as lost_file:
-        lost_file.write("*********************************************************" + "\n" + "\n")
+        lost_file.write(number_of_cps_consumers)
 
 
-def log_consumer_data_and_time_lost_to_file(interrupted_cps_name, time_of_injection, interrupted_cps_data_rate):
+# def append_stars_to_file():
+#     with open("time_and_data_loss.csv", "a") as lost_file:
+#         lost_file.write("*********************************************************" + "\n" + "\n")
+
+
+def log_consumer_data_and_time_lost_to_file(negotiating_delay, interrupted_cps_name, time_of_injection, interrupted_cps_data_rate):
 
         consumers_of_interrupted_cps = list(cps_graph.out_edges(interrupted_cps_name, data=True))
 
@@ -90,26 +94,27 @@ def log_consumer_data_and_time_lost_to_file(interrupted_cps_name, time_of_inject
 
             consumer_of_interrupted_cps_internal_timer = float(nx.get_node_attributes(cps_graph, 'internal_timer')[consumer_name])
 
-            print(consumer_of_interrupted_cps_internal_timer)
+            #print(consumer_of_interrupted_cps_internal_timer)
 
             consumer_time_loss = (time_of_injection % consumer_of_interrupted_cps_internal_timer) + negotiating_delay
             consumer_data_loss = int(consumer_time_loss * interrupted_cps_data_rate) / 1000000
 
+            consumer_name = f"{consumer_name},"
+            consumer_internal_timer = f"{consumer_of_interrupted_cps_internal_timer},"
+            consumer_data_lost = f"{consumer_data_loss},"
+            consumer_time_lost = f"{consumer_time_loss},"
 
-            consumer_internal_timer = f"Consumer {consumer_name} checkpoint delay: {consumer_of_interrupted_cps_internal_timer}us" + "\n"
-            consumer_data_lost = f"Consumer {consumer_name} -> DATA LOST: {consumer_data_loss}kb" + "\n"
-            consumer_time_lost = f"Consumer {consumer_name} -> TIME LOST: {consumer_time_loss}us" + "\n"
-            write_time_and_data_lost_to_file("" ,consumer_internal_timer, consumer_data_lost, consumer_time_lost)
+            # consumer_internal_timer = f"Consumer {consumer_name} checkpoint delay: {consumer_of_interrupted_cps_internal_timer}us" + "\n"
+            # consumer_data_lost = f"Consumer {consumer_name} -> DATA LOST: {consumer_data_loss}kb" + "\n"
+            # consumer_time_lost = f"Consumer {consumer_name} -> TIME LOST: {consumer_time_loss}us" + "\n"
+            write_time_and_data_lost_to_file(consumer_name, "", consumer_internal_timer, consumer_data_lost, consumer_time_lost, " ")
 
-        append_stars_to_file()
-
-
+        # append_stars_to_file()
 
 
+def inject_fault(no_injections, negotiating_delay):
 
-def inject_fault(no_injections):
-
-    open("time_and_data_loss.text", "w").close()
+    open("time_and_data_loss.csv", "w").close()
 
     for n in range(1, no_injections + 1):
         cps_list = []
@@ -132,17 +137,26 @@ def inject_fault(no_injections):
         cps_time_loss = time_of_injection % interrupted_cps_internal_timer
         cps_data_loss = int(cps_time_loss * interrupted_cps_data_rate) / 1000000
 
-        time_of_interrupt = f"The {n}th injection was on the CPS: {interrupted_cps_name} at the time {time_of_injection}s" + "\n"
-        cps_internal_timer = f"CPS {interrupted_cps_name} checkpoint delay: {interrupted_cps_internal_timer}us" + "\n"
-        cps_data_lost = f"CPS {interrupted_cps_name} -> DATA LOST: {cps_data_loss}kb" + "\n"
-        cps_time_lost = f"CPS {interrupted_cps_name} -> TIME LOST: {cps_time_loss}us" + "\n"
+        cps_name = f"{interrupted_cps_name},"
+        injection_time = f"{time_of_injection},"
+        cps_internal_timer = f"{interrupted_cps_internal_timer},"
+        cps_data_lost = f"{cps_data_loss},"
+        cps_time_lost = f"{cps_time_loss},"
+        number_of_cps_consumers = f"{len(list(cps_graph.out_edges(interrupted_cps_name, data=True)))}"
 
-        write_time_and_data_lost_to_file(time_of_interrupt, cps_internal_timer, cps_data_lost, cps_time_lost)
+        print(len(list(cps_graph.out_edges(interrupted_cps_name, data=True))))
+
+        # time_of_interrupt = f"The {n}th injection was on the CPS: {interrupted_cps_name} at the time {time_of_injection}s" + "\n"
+        # cps_internal_timer = f"CPS {interrupted_cps_name} checkpoint delay: {interrupted_cps_internal_timer}us" + "\n"
+        # cps_data_lost = f"CPS {interrupted_cps_name} -> DATA LOST: {cps_data_loss}kb" + "\n"
+        # cps_time_lost = f"CPS {interrupted_cps_name} -> TIME LOST: {cps_time_loss}us" + "\n"
+
+        write_time_and_data_lost_to_file(cps_name, injection_time, cps_internal_timer, cps_data_lost, cps_time_lost, number_of_cps_consumers)
 
         #consumer_delay = datetime.now().microsecond
         #consumer_delay = 100000
 
-        log_consumer_data_and_time_lost_to_file(interrupted_cps_name, time_of_injection, interrupted_cps_data_rate)
+        log_consumer_data_and_time_lost_to_file(negotiating_delay, interrupted_cps_name, time_of_injection, interrupted_cps_data_rate)
 
 
 def get_number_of_fault_injections() -> int:
@@ -157,9 +171,8 @@ def get_negotiating_delay() -> int:
 
     negotiating_delay:int = int(input(f"Enter the negotiating delay: "))
 
-    print(" ")
-
     return negotiating_delay
+
 
 
 def main():
@@ -174,9 +187,9 @@ def main():
 
      print(" ")
 
-     get_negotiating_delay()
+     negotiating_delay:int = get_negotiating_delay()
 
-     inject_fault(no_injections)
+     inject_fault(no_injections, negotiating_delay)
 
 
      generate_and_draw_graph()
