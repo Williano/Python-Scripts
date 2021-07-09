@@ -32,10 +32,10 @@ def get_cps_data() -> list:
 
         cps_graph.add_node(name, internal_timer= cps_internal_time)
 
-        get_cps_consumers(name, cps_internal_time)
+        get_cps_consumers(name)
 
 
-def get_cps_consumers(cps_name, cps_internal_timer):
+def get_cps_consumers(cps_name):
 
     number_of_consumers = int(input(f"How many consumer systems does {cps_name} have? (eg. 1, 2, ..): "))
 
@@ -43,8 +43,7 @@ def get_cps_consumers(cps_name, cps_internal_timer):
             consumer:str = input(f"Enter the name of {cps_name} consumer {cps_consumer}: ")
             date_rate = input(f"Enter the data rate(kbps): ")
 
-            cps_info = (cps_name, consumer, {"data_rate": date_rate + "kbps",
-                        "internal_timer": cps_internal_timer})
+            cps_info = (cps_name, consumer, {"data_rate": date_rate + "kbps"})
 
             GRAPH_NODES.append(cps_info)
 
@@ -88,11 +87,23 @@ def append_new_line_to_file():
 
 def log_consumer_data_and_time_lost_to_file(negotiating_delay, interrupted_cps_name, time_of_injection, interrupted_cps_data_rate):
 
+
         consumers_of_interrupted_cps = list(cps_graph.out_edges(interrupted_cps_name, data=True))
 
-        for consumer in range(0, len(consumers_of_interrupted_cps)):
+        descendants_of_interrupted_cps: list = []
+
+        for consumer in range(len(consumers_of_interrupted_cps)):
 
             consumer_name = consumers_of_interrupted_cps[consumer][1]
+            descendants_of_interrupted_cps.append(consumer_name)
+
+            descendants = list(nx.descendants(cps_graph, consumer_name))
+            descendants_of_interrupted_cps.extend(descendants)
+
+
+        for index, consumer in enumerate(descendants_of_interrupted_cps):
+
+            consumer_name = consumer
 
             consumer_of_interrupted_cps_internal_timer = float(nx.get_node_attributes(cps_graph, 'internal_timer')[consumer_name])
 
@@ -116,20 +127,16 @@ def inject_fault(no_injections, negotiating_delay):
     open("time_and_data_loss.csv", "w").close()
 
     for n in range(1, no_injections + 1):
-        cps_list = []
+
         time_of_injection = datetime.now().microsecond
 
         sleep(random.uniform(0.5, 1.5))
 
         interrupted_cps = secrets.choice(GRAPH_NODES)
-        cps1 = interrupted_cps[0]
-        cps_list.append(cps1)
-        cps2 = interrupted_cps[1]
-        cps_list.append(cps2)
         interrupted_cps_name = interrupted_cps[0]
 
 
-        interrupted_cps_internal_timer = float(interrupted_cps[2]["internal_timer"])
+        interrupted_cps_internal_timer = float(nx.get_node_attributes(cps_graph, 'internal_timer')[interrupted_cps_name])
         interrupted_cps_data_rate = int("".join(list(interrupted_cps[2]["data_rate"])[:-4]))
 
 
