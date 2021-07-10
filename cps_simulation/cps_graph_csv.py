@@ -69,7 +69,6 @@ def generate_and_draw_graph():
 
 def write_time_and_data_lost_to_file(cps_name, injection_time, internal_timer, data_lost, time_lost, number_of_cps_consumers):
 
-    #print(number_of_cps_consumers)
 
     with open("time_and_data_loss.csv", "a") as lost_file:
         lost_file.write(cps_name)
@@ -90,25 +89,27 @@ def log_consumer_data_and_time_lost_to_file(negotiating_delay, interrupted_cps_n
 
         consumers_of_interrupted_cps = list(cps_graph.out_edges(interrupted_cps_name, data=True))
 
-        descendants_of_interrupted_cps: list = []
+        decendants_of_interrupted_cps: list = []
 
         for consumer in range(len(consumers_of_interrupted_cps)):
 
             consumer_name = consumers_of_interrupted_cps[consumer][1]
-            descendants_of_interrupted_cps.append(consumer_name)
+            decendants_of_interrupted_cps.append({"consumer_name": consumer_name, "negotiating_delay": 0})
 
             descendants = list(nx.descendants(cps_graph, consumer_name))
-            descendants_of_interrupted_cps.extend(descendants)
+
+            cps_decendants = [{"consumer_name": descendant, "negotiating_delay": negotiating_delay} for index, descendant in enumerate(descendants)]
+
+            decendants_of_interrupted_cps.extend(cps_decendants)
 
 
-        for index, consumer in enumerate(descendants_of_interrupted_cps):
+        for index, consumer in enumerate(decendants_of_interrupted_cps):
 
-            consumer_name = consumer
+            consumer_name = consumer["consumer_name"]
 
             consumer_of_interrupted_cps_internal_timer = float(nx.get_node_attributes(cps_graph, 'internal_timer')[consumer_name])
 
-
-            consumer_time_loss = (time_of_injection % consumer_of_interrupted_cps_internal_timer) + negotiating_delay
+            consumer_time_loss = (time_of_injection % consumer_of_interrupted_cps_internal_timer) + (negotiating_delay + consumer["negotiating_delay"])
             consumer_data_loss = int(consumer_time_loss * interrupted_cps_data_rate) / 1000000
 
             cps_consumer_name = f"{consumer_name},"
@@ -135,9 +136,10 @@ def inject_fault(no_injections, negotiating_delay):
         interrupted_cps = secrets.choice(GRAPH_NODES)
         interrupted_cps_name = interrupted_cps[0]
 
+        total_data_rate = sum([int("".join(list(edge[2]["data_rate"])[:-4])) for index, edge in enumerate(list(cps_graph.out_edges(interrupted_cps_name, data=True)))])
 
         interrupted_cps_internal_timer = float(nx.get_node_attributes(cps_graph, 'internal_timer')[interrupted_cps_name])
-        interrupted_cps_data_rate = int("".join(list(interrupted_cps[2]["data_rate"])[:-4]))
+        interrupted_cps_data_rate = total_data_rate
 
 
         cps_time_loss = time_of_injection % interrupted_cps_internal_timer
