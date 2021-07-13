@@ -138,6 +138,8 @@ def inject_fault(no_injections, negotiating_delay):
 
         total_data_rate = sum([int("".join(list(edge[2]["data_rate"])[:-4])) for index, edge in enumerate(list(cps_graph.out_edges(interrupted_cps_name, data=True)))])
 
+        print(f"{interrupted_cps_name} - {total_data_rate}")
+
         interrupted_cps_internal_timer = float(nx.get_node_attributes(cps_graph, 'internal_timer')[interrupted_cps_name])
         interrupted_cps_data_rate = total_data_rate
 
