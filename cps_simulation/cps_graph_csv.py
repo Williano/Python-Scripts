@@ -94,11 +94,11 @@ def log_consumer_data_and_time_lost_to_file(negotiating_delay, interrupted_cps_n
         for consumer in range(len(consumers_of_interrupted_cps)):
 
             consumer_name = consumers_of_interrupted_cps[consumer][1]
-            decendants_of_interrupted_cps.append({"consumer_name": consumer_name, "negotiating_delay": 0})
+            decendants_of_interrupted_cps.append({"consumer_name": consumer_name, "negotiating_delay": 0, "data_rate": interrupted_cps_data_rate})
 
             descendants = list(nx.descendants(cps_graph, consumer_name))
 
-            cps_decendants = [{"consumer_name": descendant, "negotiating_delay": negotiating_delay} for index, descendant in enumerate(descendants)]
+            cps_decendants = [{"consumer_name": descendant, "negotiating_delay": negotiating_delay, "data_rate": 0} for index, descendant in enumerate(descendants)]
 
             decendants_of_interrupted_cps.extend(cps_decendants)
 
@@ -110,7 +110,7 @@ def log_consumer_data_and_time_lost_to_file(negotiating_delay, interrupted_cps_n
             consumer_of_interrupted_cps_internal_timer = float(nx.get_node_attributes(cps_graph, 'internal_timer')[consumer_name])
 
             consumer_time_loss = (time_of_injection % consumer_of_interrupted_cps_internal_timer) + (negotiating_delay + consumer["negotiating_delay"])
-            consumer_data_loss = int(consumer_time_loss * interrupted_cps_data_rate) / 1000000
+            consumer_data_loss = int(consumer_time_loss * consumer["data_rate"]) / 1000000
 
             cps_consumer_name = f"{consumer_name},"
             cps_consumer_internal_timer = f"{consumer_of_interrupted_cps_internal_timer},"
@@ -138,7 +138,6 @@ def inject_fault(no_injections, negotiating_delay):
 
         total_data_rate = sum([int("".join(list(edge[2]["data_rate"])[:-4])) for index, edge in enumerate(list(cps_graph.out_edges(interrupted_cps_name, data=True)))])
 
-        print(f"{interrupted_cps_name} - {total_data_rate}")
 
         interrupted_cps_internal_timer = float(nx.get_node_attributes(cps_graph, 'internal_timer')[interrupted_cps_name])
         interrupted_cps_data_rate = total_data_rate
