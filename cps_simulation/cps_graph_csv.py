@@ -109,8 +109,13 @@ def log_consumer_data_and_time_lost_to_file(negotiating_delay, interrupted_cps_n
 
             consumer_of_interrupted_cps_internal_timer = float(nx.get_node_attributes(cps_graph, 'internal_timer')[consumer_name])
 
+            total_data_rate = sum([int("".join(list(edge[2]["data_rate"])[:-4])) for index, edge in enumerate(list(cps_graph.out_edges(consumer_name, data=True)))])
+
+            print(total_data_rate)
+
             consumer_time_loss = (time_of_injection % consumer_of_interrupted_cps_internal_timer) + (negotiating_delay + consumer["negotiating_delay"])
-            consumer_data_loss = int(consumer_time_loss * consumer["data_rate"]) / 1000000
+            consumer_data_loss = int(consumer_time_loss * total_data_rate) / 1000000
+
 
             cps_consumer_name = f"{consumer_name},"
             cps_consumer_internal_timer = f"{consumer_of_interrupted_cps_internal_timer},"
